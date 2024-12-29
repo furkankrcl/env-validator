@@ -1,10 +1,10 @@
 {
   "name": "env-validator-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to validate .env files based on a config file",
   "main": "dist/index.js",
   "bin": {
-    "env-validator": "dist/index.js"
+    "env-validator-cli": "dist/index.js"
   },
   "scripts": {
     "start": "ts-node src/index.ts",
