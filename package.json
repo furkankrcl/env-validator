@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "CLI tool to validate .env files based on a config file",
   "main": "dist/index.js",
+  "bin": {
+    "env-validator": "dist/index.js"
+  },
   "scripts": {
     "start": "ts-node src/index.ts",
     "build": "tsc",
@@ -15,6 +18,22 @@
   ],
   "author": "furkankrcl",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/furkankrcl/env-validator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/furkankrcl/env-validator/issues"
+  },
+  "homepage": "https://github.com/furkankrcl/env-validator#readme",
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
     "dotenv": "^16.4.7",
     "yargs": "^17.7.2"
