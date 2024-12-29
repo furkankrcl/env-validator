@@ -24,7 +24,7 @@
 Install the package globally with the following command:
 
 ```bash
-npm install -g env-validator
+npm install -g env-validator-cli
 ```
 
 #### Verify Installation:
@@ -32,7 +32,7 @@ npm install -g env-validator
 To verify that the installation was successful:
 
 ```bash
-env-validator --help
+env-validator-cli --help
 ```
 
 ## 📂 Configuration (Config File)
@@ -85,7 +85,7 @@ The tool requires a config file to operate. You can create the config file in JS
 You can run the tool by specifying the path to your config file:
 
 ```bash
-env-validator --config=path/to/config.json
+env-validator-cli --config=path/to/config.json
 ```
 
 ### Example Outputs:

@@ -1,5 +1,5 @@
 {
-  "name": "env-validator",
+  "name": "env-validator-cli",
   "version": "1.0.0",
   "description": "CLI tool to validate .env files based on a config file",
   "main": "dist/index.js",

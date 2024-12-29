@@ -24,7 +24,7 @@
 Paketinizi şu komutla global olarak yükleyin:
 
 ```bash
-npm install -g env-validator
+npm install -g env-validator-cli
 ```
 
 #### Doğruluğunu kontrol edin:
@@ -32,7 +32,7 @@ npm install -g env-validator
 Kurulumun başarılı olduğunu doğrulamak için:
 
 ```bash
-env-validator --help
+env-validator-cli --help
 ```
 
 ## 📂 Yapılandırma (Config Dosyası)
@@ -85,7 +85,7 @@ Aracın çalışması için bir config dosyasına ihtiyacı vardır. Config dosy
 Config dosyanızın yolunu belirterek çalıştırabilirsiniz:
 
 ```bash
-env-validator --config=path/to/config.json
+env-validator-cli --config=path/to/config.json
 ```
 
 ### Örnek Çıktılar:
