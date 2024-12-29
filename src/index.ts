@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { validateEnvFiles } from "./validator";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
