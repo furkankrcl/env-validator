@@ -1,4 +1,5 @@
-import fs from "fs";
+import { existsSync } from "fs";
+import { resolve } from "path";
 
 export interface VariableConfig {
   required: boolean;
@@ -14,9 +15,16 @@ export interface ValidationConfig {
 }
 
 export const loadConfig = (configPath: string): ValidationConfig => {
-  if (!fs.existsSync(configPath)) {
+  if (!existsSync(configPath)) {
     throw new Error(`Config file not found: ${configPath}`);
   }
+  const absolutePath = resolve(configPath);
+  const config = require(absolutePath);
 
-  return JSON.parse(fs.readFileSync(configPath, "utf-8")) as ValidationConfig;
+  if (!config.envFiles || !config.variables) {
+    throw new Error(
+      'Invalid config format: "envFiles" and "variables" are required.'
+    );
+  }
+  return config as ValidationConfig;
 };

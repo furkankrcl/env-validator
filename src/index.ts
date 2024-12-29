@@ -1,7 +1,7 @@
 import { validateEnvFiles } from "./validator";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import path from "path";
+import { loadConfig } from "./configLoader";
 
 (async () => {
   const argv = yargs(hideBin(process.argv))
@@ -14,11 +14,9 @@ import path from "path";
     })
     .parseSync();
 
-  const configPath = path.resolve(argv.config);
-
   try {
-    // Dinamik olarak config.ts dosyasını yükle
-    const { config } = await import(configPath);
+    const configPath = argv.config;
+    const config = loadConfig(configPath);
     const report = validateEnvFiles(config);
 
     console.log("Validation Report:\n", report);

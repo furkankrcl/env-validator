@@ -4,7 +4,7 @@ import { parse } from "dotenv";
 import { ValidationConfig } from "./configLoader";
 
 export const validateEnvFiles = (config: ValidationConfig): string => {
-  const envPath = config.envPath || ".";
+  const envPath = config.envPath || process.cwd();
   const envFiles = config.envFiles || [".env"];
   const issues: string[] = [];
 
@@ -34,7 +34,8 @@ export const validateEnvFiles = (config: ValidationConfig): string => {
   Object.entries(config.variables).forEach(([variable, rules]) => {
     envFiles.forEach((file) => {
       const vars = loadedEnvVars[file];
-      const value = vars?.[variable];
+      if (!vars) return;
+      const value = vars[variable];
 
       // Required kontrolü
       if (rules.required && !value) {
