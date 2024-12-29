@@ -32,6 +32,18 @@ export const validateEnvFiles = (config: ValidationConfig): string => {
 
   // Config'e göre değişkenleri kontrol et
   Object.entries(config.variables).forEach(([variable, rules]) => {
+    if (!["string", "number", "boolean", "enum"].includes(rules.type)) {
+      issues.push(`Invalid config for ${variable}: "type" is required.`);
+      return;
+    }
+
+    if (rules.type === "enum" && !rules.enum?.length) {
+      issues.push(
+        `Invalid config for ${variable}: "enum" is required for type "enum".`
+      );
+      return;
+    }
+
     envFiles.forEach((file) => {
       const vars = loadedEnvVars[file];
       if (!vars) return;
@@ -52,7 +64,7 @@ export const validateEnvFiles = (config: ValidationConfig): string => {
         }
 
         // Enum kontrolü
-        if (rules.enum && !rules.enum.includes(value)) {
+        if (rules.type === "enum" && !rules.enum?.includes(value)) {
           issues.push(
             `Invalid value for ${variable} in ${file}: Expected one of ${JSON.stringify(
               rules.enum

@@ -3,7 +3,7 @@ import { resolve } from "path";
 
 export interface VariableConfig {
   required: boolean;
-  type?: "string" | "number" | "boolean";
+  type: "string" | "number" | "boolean" | "enum";
   enum?: string[];
   regex?: string;
 }
